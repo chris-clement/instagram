@@ -15,4 +15,5 @@ RSpec.feature "Making a post", type: :feature do
     click_button "Submit"
     expect(page).to have_content("Thanks for posting")
   end
+  
 end
