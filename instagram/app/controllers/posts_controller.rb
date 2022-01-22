@@ -18,9 +18,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(content: post_params["content"])
-      if @post.valid?
+    @post.post_photo.attach(post_params["post_photo"])
+      if @post.post_photo.attached? == false
+        flash.alert = "Instagram requires you have a photo with each post. Try again."
+      elsif @post.valid?
         @post.save
-        @post.post_photo.attach(post_params["post_photo"])
         flash.alert = "Thanks for posting"
       else
         flash.alert = "Post not made"
