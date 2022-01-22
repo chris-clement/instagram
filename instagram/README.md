@@ -39,6 +39,3 @@ end
 You can also lint Javascript, CSS, and ERB — feel free to research this. These
 will help you to train yourself to produce cleaner code — and will often alert
 you to mistakes or mishaps!
-
-
-test2asdasdadssad
