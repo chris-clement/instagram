@@ -1,8 +1,12 @@
 <h1>Instagram Feed </h1>
 
-
-
 <p><%= link_to "Create new post", {:action => 'new' } %></p>
+
+<% flash.each do |_type, message| %>
+  <div style="color: red">
+  <%= message %>
+  </div>
+<% end %>
 
 <% @posts.each do |post| %>
   <p>

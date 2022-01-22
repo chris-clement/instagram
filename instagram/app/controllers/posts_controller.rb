@@ -18,14 +18,13 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(content: post_params["content"])
-    respond_to do |format|
       if @post.valid?
         @post.save
-        format.html { render action: "index", notice: "Post created!"}
+        flash.alert = "Thanks for posting"
       else
-        render :new, status: :unprocessable_entity
+        flash.alert = "Post not made"
       end
-    end
+      redirect_to '/posts'
   end
 
   private
