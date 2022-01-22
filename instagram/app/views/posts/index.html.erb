@@ -1,5 +1,9 @@
 <h1>Instagram Feed </h1>
 
+
+
+<p><%= link_to "Create new post", {:action => 'new' } %></p>
+
 <% @posts.each do |post| %>
   <p>
   <%= post.content %>
