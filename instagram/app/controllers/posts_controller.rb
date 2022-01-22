@@ -21,8 +21,6 @@ class PostsController < ApplicationController
       if @post.valid?
         @post.save
         @post.post_photo.attach(post_params["post_photo"])
-        p "Did the photo attach?"
-        p @post.post_photo.attached?
         flash.alert = "Thanks for posting"
       else
         flash.alert = "Post not made"
