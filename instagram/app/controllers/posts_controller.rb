@@ -20,6 +20,9 @@ class PostsController < ApplicationController
     @post = Post.new(content: post_params["content"])
       if @post.valid?
         @post.save
+        @post.post_photo.attach(post_params["post_photo"])
+        p "Did the photo attach?"
+        p @post.post_photo.attached?
         flash.alert = "Thanks for posting"
       else
         flash.alert = "Post not made"
@@ -30,6 +33,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :post_photo)
   end
 end
