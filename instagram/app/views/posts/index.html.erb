@@ -1,7 +1,8 @@
-<h1>This is where my posts will be </h1>
+<h1>Instagram Feed </h1>
 
 <% @posts.each do |post| %>
-  <li>
+  <p>
   <%= post.content %>
-  </li>
+    <%= link_to 'Full Post', post %>
+  </p>
 <% end %>
