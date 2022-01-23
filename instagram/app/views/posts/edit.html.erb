@@ -1,0 +1,14 @@
+<h2> Edit your post below </h2>
+
+<%= form_for @post do |form| %>
+  <%= form.label "Text:"%>
+  <%= form.text_field :content %>
+  <br>
+  <br>
+  <%= form.label "Tags:"%>
+  <%= form.text_field :hashtags %>
+  <br>
+  <br>
+  <%= form.file_field :post_photo, accept: 'image/png, image/jpeg' %>
+  <%= form.submit "Submit" %>
+<% end %>

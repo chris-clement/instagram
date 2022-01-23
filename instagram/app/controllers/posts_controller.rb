@@ -17,8 +17,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    p "Testing playing with hashtags params"
-    p post_params["hashtags"].strip.split('#')
     @post = Post.new(content: post_params["content"], hashtags: post_params["hashtags"].strip.split('#'))
     @post.post_photo.attach(post_params["post_photo"])
       if @post.post_photo.attached? == false
@@ -31,6 +29,23 @@ class PostsController < ApplicationController
       end
       redirect_to '/posts'
   end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def update
+    @post = Post.find_by(id: params[:id])
+    if @post.update(content: post_params["content"], hashtags: post_params["hashtags"].strip.split('#'))
+      @post.post_photo.attach(post_params["post_photo"])
+      flash.alert = "Post updated"
+      redirect_to '/posts'
+    else
+      flash.alert = "update failed"
+      redirect_to '/posts'
+    end
+  end
+  
 
   private
 

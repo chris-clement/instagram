@@ -10,4 +10,9 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  # match '/posts/edit/:id', to 'posts#edit', :as => :edit_post
+  # match '/posts/update/:id', to 'posts#update', :as => :update_post
+
+
+
 end
