@@ -5,6 +5,8 @@
   <%= form.text_field :content %>
   <br>
   <br>
+  <%= form.label "Tags:"%>
+  <%= form.text_field :hashtags %>
   <%= form.file_field :post_photo, accept: 'image/png, image/jpeg' %>
   <%= form.submit "Submit" %>
 <% end %>
