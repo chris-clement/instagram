@@ -17,7 +17,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(content: post_params["content"])
+    p "Testing playing with hashtags params"
+    p post_params["hashtags"].strip.split('#')
+    @post = Post.new(content: post_params["content"], hashtags: post_params["hashtags"].strip.split('#'))
     @post.post_photo.attach(post_params["post_photo"])
       if @post.post_photo.attached? == false
         flash.alert = "Instagram requires you have a photo with each post. Try again."
@@ -33,6 +35,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :post_photo)
+    params.require(:post).permit(:content, :post_photo, :hashtags)
   end
 end
