@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    p post_params["hashtags"].strip.split('#')
     @post = Post.new(content: post_params["content"], hashtags: post_params["hashtags"].strip.split('#'))
     @post.post_photo.attach(post_params["post_photo"])
       if @post.post_photo.attached? == false
