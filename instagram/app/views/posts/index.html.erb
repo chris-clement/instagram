@@ -2,6 +2,8 @@
 
 <p><%= link_to "Create new post", {:action => 'new' } %></p>
 
+<p><%= link_to "Show All posts", root_path %></p>
+
 <h2> Filter by a given hashtag </h2>
 
 <%= form_with url: '/posts', method: :get  do |form| %>
