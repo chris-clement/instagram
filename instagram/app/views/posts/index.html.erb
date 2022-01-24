@@ -2,12 +2,21 @@
 
 <p><%= link_to "Create new post", {:action => 'new' } %></p>
 
+<h2> Filter by a given hashtag </h2>
+
+<%= form_with url: '/posts', method: :get  do |form| %>
+  <%= form.label "Hashtag:"%>
+  <%= form.text_field :hashtags_filter %>
+  <%= form.submit "Filter" %>
+<% end %>
+
 <% flash.each do |_type, message| %>
   <div style="color: red">
   <%= message %>
   </div>
 <% end %>
 
+<h3> Look at all your posts below </h3>
 <% @posts.reverse.each do |post| %>
   <p>
   <%= post.content %>
@@ -16,6 +25,5 @@
   <% end %>
     <%= link_to 'Full Post', post %>
     <%= link_to "Edit", edit_post_path(post) %>
-    
   </p>
 <% end %>

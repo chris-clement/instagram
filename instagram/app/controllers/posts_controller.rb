@@ -5,7 +5,11 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all
+    if params["hashtags_filter"] == nil
+      @posts = Post.all
+    else  
+      @posts = Post.where("hashtags LIKE ?", "%" + params["hashtags_filter"] + "%")
+    end
   end
 
   def show
